@@ -47,3 +47,38 @@ body {
   font-size: 3rem;
   font-weight: 700;
 }
+
+#botao-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3px;
+}
+
+#botao-container button {
+  border: 1px solid transparent;
+  border-radius: 0;
+  height: 4rem;
+  font-size: 1.2rem;
+  background-color: #dbdbdb;
+  cursor: pointer;
+}
+
+#botao-container .numero {
+  background-color: #f3f3f3;
+}
+
+#botao-container button:hover {
+  background-color: #bababa;
+  border-color: #999;
+}
+
+#botao-container #igual-btn {
+    grid-column: span 2;
+    background-color: #75a5cb;
+}
+
+#botao-container #igual-btn:hover {
+    background-color: #3a91d8;
+}
+
+
