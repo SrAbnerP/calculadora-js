@@ -73,12 +73,11 @@ body {
 }
 
 #botao-container #igual-btn {
-    grid-column: span 2;
-    background-color: #75a5cb;
+  grid-column: span 2;
+  background-color: #75a5cb;
 }
 
 #botao-container #igual-btn:hover {
-    background-color: #3a91d8;
+  grid-template-columns: span 2;
+  background-color: #3a91d8;
 }
-
-
