@@ -20,18 +20,35 @@ class Calculadora {
     this.atualizarTela();
   }
 
-  // Atualiza os valores na tela
-  atualizarTela() {
-    this.atualOperacaoText.innerText += this.atualOperacao;
+  // Realiza as operacoes
+  operacoes(operacao) {
+    let operacaoValor;
+    const previa = +this.previaOparacaoText.innerText;
+    const atual = +this.atualOperacaoText.innerText;
+
+    switch (operacao) {
+      case "+":
+        operacaoValor = previa + atual;
+        this.atualizarTela(operacaoValor, operacao, atual, previa);
+        break;
+
+      default:
+        return;
+    }
   }
 
-  operacoes(operacao) {
-    
-    let operacaoValor;
-    let previa = +this.previaOparacaoText.innerText;
-    let atual = +this.atualOperacaoText.innerText;
-
-
+  // Atualiza os valores na tela
+  atualizarTela(
+    operacaoValor = null,
+    operacao = null,
+    atual = null,
+    previa = null
+  ) {
+    if (operacaoValor == null) {
+      this.atualOperacaoText.innerText += this.atualOperacao;
+    } else {
+      // Checa se o valor for zero, ele add o valor atual
+    }
   }
 }
 
