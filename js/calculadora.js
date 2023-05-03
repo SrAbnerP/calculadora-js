@@ -8,6 +8,31 @@ class Calculadora {
     this.atualOperacaoText = atualOperacaoText;
     this.atualOperacao = "";
   }
+
+  // Add o digito da calculadora na tela
+  addDigito(digito) {
+    // Checa se ja existe um ponto
+    if (digito === "." && this.atualOperacaoText.innerText.includes(".")) {
+      return;
+    }
+
+    this.atualOperacao = digito;
+    this.atualizarTela();
+  }
+
+  // Atualiza os valores na tela
+  atualizarTela() {
+    this.atualOperacaoText.innerText += this.atualOperacao;
+  }
+
+  operacoes(operacao) {
+    
+    let operacaoValor;
+    let previa = +this.previaOparacaoText.innerText;
+    let atual = +this.atualOperacaoText.innerText;
+
+
+  }
 }
 
 const calc = new Calculadora(previaOparacaoText, atualOperacaoText);
@@ -17,9 +42,9 @@ botoes.forEach((btn) => {
     const valor = e.target.innerText;
 
     if (+valor >= 0 || valor === ".") {
-      console.log(valor);
+      calc.addDigito(valor);
     } else {
-      console.log(valor);
+      calc.operacoes(valor);
     }
   });
 });
