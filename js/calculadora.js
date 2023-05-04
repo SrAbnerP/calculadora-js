@@ -22,8 +22,17 @@ class Calculadora {
 
   // Realiza as operacoes
   operacoes(operacao) {
+    // Checa se o valor é null
+    if (this.atualOperacaoText.innerText === "" && operacao !== "C") {
+      // Mudança de operacao
+      if (this.previaOparacaoText.innerText !== "") {
+        this.mudarOperacao(operacao);
+      }
+      return;
+    }
+
     let operacaoValor;
-    const previa = +this.previaOparacaoText.innerText;
+    const previa = +this.previaOparacaoText.innerText.split(" ")[0];
     const atual = +this.atualOperacaoText.innerText;
 
     switch (operacao) {
@@ -31,7 +40,30 @@ class Calculadora {
         operacaoValor = previa + atual;
         this.atualizarTela(operacaoValor, operacao, atual, previa);
         break;
-
+      case "-":
+        operacaoValor = previa - atual;
+        this.atualizarTela(operacaoValor, operacao, atual, previa);
+        break;
+      case "/":
+        operacaoValor = previa / atual;
+        this.atualizarTela(operacaoValor, operacao, atual, previa);
+        break;
+      case "*":
+        operacaoValor = previa * atual;
+        this.atualizarTela(operacaoValor, operacao, atual, previa);
+        break;
+      case "DEL":
+        this.delOperacao();
+        break;
+      case "CE":
+        this.ceOperacao();
+        break;
+      case "C":
+        this.cOperacao();
+        break;
+      case "=":
+        this.igualOperacao();
+        break;
       default:
         return;
     }
@@ -48,7 +80,52 @@ class Calculadora {
       this.atualOperacaoText.innerText += this.atualOperacao;
     } else {
       // Checa se o valor for zero, ele add o valor atual
+      if (previa === 0) {
+        operacaoValor = atual;
+      }
+
+      // Add o valor atual para o previa
+      this.previaOparacaoText.innerText = `${operacaoValor} ${operacao}`;
+      this.atualOperacaoText.innerText = "";
     }
+  }
+
+  // Muda operador
+  mudarOperacao(operacao) {
+    const mathOperacao = ["*", "/", "+", "-"];
+
+    if (!mathOperacao.includes(operacao)) {
+      return;
+    }
+
+    this.previaOparacaoText.innerText =
+      this.previaOparacaoText.innerText.slice(0, -1) + operacao;
+  }
+
+  // Deleta o ultimo digito
+  delOperacao() {
+    this.atualOperacaoText.innerText = this.atualOperacaoText.innerText.slice(
+      0,
+      -1
+    );
+  }
+
+  // Deleta o numero atual
+  ceOperacao() {
+    this.atualOperacaoText.innerText = "";
+  }
+
+  // Deleta tudo
+  cOperacao() {
+    this.atualOperacaoText.innerText = "";
+    this.previaOparacaoText.innerText = "";
+  }
+
+  // Igual
+  igualOperacao() {
+    const operacao = previaOparacaoText.innerHTML.split(" ")[1];
+
+    this.operacoes(operacao);
   }
 }
 
