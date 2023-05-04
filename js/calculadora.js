@@ -31,6 +31,17 @@ class Calculadora {
       return;
     }
 
+    /*if (
+      this.previaOparacaoText.innerText !== "" &&
+      this.atualOperacaoText.innerText !== "" &&
+      operacao == "=" &&
+      operacao !== "C" &&
+      operacao !== "CE" &&
+      operacao !== "DEL"
+    ) {
+      this.igualOperacao();
+    }*/
+
     let operacaoValor;
     const previa = +this.previaOparacaoText.innerText.split(" ")[0];
     const atual = +this.atualOperacaoText.innerText;
