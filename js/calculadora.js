@@ -153,3 +153,18 @@ botoes.forEach((btn) => {
     }
   });
 });
+
+window.addEventListener("keydown", (e) => {
+  const valor = e.key;
+
+  if (+valor >= 0 || valor === ".") {
+    calc.addDigito(valor);
+  } else {
+    calc.operacoes(valor);
+  }
+
+  if (valor == "Enter") {
+    calc.operacoes("=");
+    calc.igualOperacao();
+  }
+});
